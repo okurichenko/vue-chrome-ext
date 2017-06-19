@@ -1,36 +1,39 @@
 <template>
   <div id="app">
-    <button @click="getValues">Get values</button>
+    <div v-if="user">
+      <button @click="signOut">Sign out</button>
+      <rooms-list></rooms-list>
+    </div>
+    <div v-else>
+      <sign-in></sign-in>
+    </div>
   </div>
 </template>
 
 <script>
   import Vue from 'vue';
+  import { mapState } from 'vuex'
+  import firebaseApp from './firebase.js'
+
+  import SignIn from './components/SignIn.vue';
+  import RoomsList from './components/RoomsList.vue';
 
   export default {
     name: 'app',
-    data () {
-      return {
-        token: null,
-        upworkTask: {}
+    components: {
+      RoomsList,
+      SignIn
+    },
+    computed: {
+      user() {
+        return this.$store.state.user;
       }
     },
-    mounted() {
-      const bp = chrome.extension.getBackgroundPage();
-
-      bp.getToken().then((token) => {
-        console.log(token);
-        Vue.http.headers.common['Authorization'] = `Bearer ${token}`;
-
-      this.token = token;
-    })
-      ;
-    },
     methods: {
-      getValues() {
-        return this.$http.get('https://www.googleapis.com/drive/v3/files').then((data) => {
-              console.log(data)
-      })
+      signOut() {
+        firebaseApp.auth().signOut().then(() => {
+          this.$store.state.user = null;
+        });
       }
     }
   }
@@ -43,9 +46,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding: 10px;
   width: 300px;
-  height: 200px;
+  height: 220px;
 }
 
 h1, h2 {

@@ -14,7 +14,6 @@ module.exports = {
       { from: 'index.html' },
       { from: 'icon.png' },
       { from: 'manifest.json' },
-      { from: 'src/assets/gapi.js' },
       { from: 'src/assets/background.js' },
     ]),
   ],

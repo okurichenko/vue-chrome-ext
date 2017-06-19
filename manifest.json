@@ -16,14 +16,17 @@
   "permissions": [
     "identity",
     "activeTab",
-    "https://ajax.googleapis.com/",
-    "https://sheets.googleapis.com/"
+    "https://ajax.googleapis.com/*",
+    "https://sheets.googleapis.com/*",
+    "https://accounts.google.com/*",
+    "https://cooperate-for-food.firebaseio.com/"
   ],
   "oauth2": {
     "client_id": "324172994404-dnji78iahqh6tg6u4vnqtpb1f9oe25gj.apps.googleusercontent.com",
     "scopes": [
       "https://www.googleapis.com/auth/drive.file",
-      "https://www.googleapis.com/auth/userinfo.email"
+      "https://www.googleapis.com/auth/userinfo.email",
     ]
-  }
+  },
+  "content_security_policy":"script-src 'self' https://cooperate-for-food.firebaseio.com https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'"
 }
