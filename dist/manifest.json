@@ -1,0 +1,32 @@
+{
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtipTNUfvCx9KzCxHf9tsKiUsJjWq2vr8DBxC2AQga97ZCft2utg3CPUOxlGxp5jtFklMxKIVB9Ib/71aBdwqqkak8pOAjRSWkrdfpYL5JnVWxAkQTTrb47AIZkv+vxxpaVVvavAItbfProJKCZC3iechDOTeNlUTZ1PVpK7RNhEzMKHHmnKioqp3YwTF2y08rVKOn5Oj1WqTlssglWCPNc/PnPBAyzX7HvhUlxgIowyAcxLbe3TAIw/2i7qo4sSQyoJNi2vX2pK23h0FkbEiK68NYOgURp/P09Rbn48Ir9kdsvw4SFJzabX70OvFDA14CZkUKHSPkL0THhLBXkT30wIDAQAB",
+  "manifest_version": 2,
+
+  "name": "Vue ext",
+  "description": "This extension shows a Google Image search result for the current page",
+  "version": "1.0",
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "identity",
+    "activeTab",
+    "https://ajax.googleapis.com/*",
+    "https://sheets.googleapis.com/*",
+    "https://accounts.google.com/*",
+    "https://cooperate-for-food.firebaseio.com/"
+  ],
+  "oauth2": {
+    "client_id": "324172994404-dnji78iahqh6tg6u4vnqtpb1f9oe25gj.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/userinfo.email",
+    ]
+  },
+  "content_security_policy":"script-src 'self' https://cooperate-for-food.firebaseio.com https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'"
+}
